@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_655afa8aae0140f8892cebdb4b0aad0a }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_7b43d70763304b0a852f0dc02d4e3902 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_cffb4e39713c48e792f4098ff45af264 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_1e8c3726562d401bad2b99ecf9fae022 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_655afa8aae0140f8892cebdb4b0aad0a }}/bognarpal/test-azure-webapp:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_cffb4e39713c48e792f4098ff45af264 }}/bognarpal/test-azure-webapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'teszt-13A-A'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_66bf4c98d14f429eadef092528b068e9 }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_655afa8aae0140f8892cebdb4b0aad0a }}/bognarpal/test-azure-webapp:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a71c7e954ef449b297d2972e0b3b59ac }}
+        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_cffb4e39713c48e792f4098ff45af264 }}/bognarpal/test-azure-webapp:${{ github.sha }}'
